@@ -7,9 +7,10 @@
 
 {include file="head.tpl"}
 
-  {* If not logged in *}
-  {* include file="login-form.tpl" *}
-
+  {if $user<0}
+  {include file="login-form.tpl"}
+  {$user}
+  {/if}
   {* If logged in *}
   <div class="container-fluid d-flex flex-column m-auto h-100 pr-0">
       <div class="row w-100 h-100">
@@ -30,47 +31,24 @@
                         <thead>
                           <tr>
                             <th scope="col">{$recent.head.name}</th>
-                            <th scope="col">{$recent.head.date}</th>
                             <th scope="col">{$recent.head.category}</th>
-                            <th scope="col">{* Export to PDF *}</th>
-                            <th scope="col">{* Duplicate *}</th>
-                            <th scope="col">{* Edit *}</th>
-                            <th scope="col">{* Remove *}</th>
+                            <th scope="col">{$recent.head.date}</th>
+                            <th scope="col">{$recent.head.date_return}</th>
                           </tr>
                         </thead>
                         <tbody>
                           {for $i=1 to 9}
                             <tr>
                               <td class="align-middle">{$recent.body.name}</td>
-                              <td class="align-middle">{$recent.body.date}</td>
                               <td class="align-middle">{$recent.body.category}</td>
-                              <td>
-                                <a href="#" class="btn btn-outline-success">{$recent.body.pdf}</a>
-                              </td>
-                              <td>
-                                <a href="#" class="btn btn-outline-primary">{$recent.body.duplicate}</a>
-                              </td>
-                              <td>
-                                <a href="#" class="btn btn-outline-primary">{$recent.body.edit}</a>
-                              </td>
-                              <td>
-                                <a href="#" class="btn btn-outline-danger">{$recent.body.remove}</a>
-                              </td>
+                              <td class="align-middle">{$recent.body.date}</td>
+                              <td class="align-middle">{$recent.body.date_return}</td>
                             </tr>
                           {/for}
                         </tbody>
                       </table>
                     </div>
                   </div>
-
-                  {If $i>=10}
-                      <div class="w-100 text-center">
-                        <div class="btn btn-primary m-4">
-                          Load more
-                        </div>
-                      </div>
-                  {/if}
-
                 </main>
               </div> <!-- /col -->
             </div> <!-- /row -->
