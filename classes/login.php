@@ -24,5 +24,7 @@ if (isset($_POST['uname1']) and isset($_POST['pwd1'])){
     $_SESSION['user_value'] = $user_value;
   }
 
+  $smarty->assign("user", $_SESSION['user_value']);
+
 }
 ?>

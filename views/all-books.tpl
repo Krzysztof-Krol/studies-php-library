@@ -7,11 +7,7 @@
 
 {include file="head.tpl"}
 
-  {* {if $user<0} *}
-  {* {include file="login-form.tpl"} *}
-  {* {$user} *}
-  {* {/if} *}
-  {* If logged in *}
+  {* All books in library *}
   <div class="container-fluid d-flex flex-column m-auto h-100 pr-0">
       <div class="row w-100 h-100">
           <div class="col-md-9 pl-5 pr-5 pt-3 pb-3 h-100 overflow-auto">
@@ -26,7 +22,6 @@
 
                   <div class="card">
                     <div class="card-body">
-                      <h2 class="card-title">{$recent.head.header}</h2>
                       <table class="table table-sm table-light table-striped">
                         <thead>
                           <tr>
@@ -37,7 +32,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                          {for $i=1 to 9}
+                          {for $i=0 to $count_max}
                             <tr>
                               <td class="align-middle">{$recent.body.name}</td>
                               <td class="align-middle">{$recent.body.category}</td>

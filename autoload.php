@@ -27,6 +27,7 @@ $smarty->assign('nav', array(
   )
 )
 );
+
 $smarty->assign('author', array(
   'name' => 'Krzysztof Król',
   'website' => 'https://royalcode.eu',
@@ -35,16 +36,8 @@ $smarty->assign('author', array(
   'github' => 'https://github.com/Krzysztof-Krol'
 ));
 
-$dbname = "biblioteka";
-$username = "root";
-$password = "";
-$servername = "localhost";
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
 
-require("classes/login.php");
-$smarty->assign("user", $_SESSION['user_value']);
+require("classes/connect.php");
+// require("classes/login.php");
 
 ?>
