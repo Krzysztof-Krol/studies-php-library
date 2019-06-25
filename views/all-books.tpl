@@ -19,27 +19,19 @@
             <div class="row">
               <div class="col-md-12">
                 <main>
-
                   <div class="card">
                     <div class="card-body">
                       <table class="table table-sm table-light table-striped">
                         <thead>
                           <tr>
+                            <th scope="col d-none"></th>
                             <th scope="col">{$recent.head.name}</th>
-                            <th scope="col">{$recent.head.category}</th>
                             <th scope="col">{$recent.head.date}</th>
                             <th scope="col">{$recent.head.date_return}</th>
                           </tr>
                         </thead>
                         <tbody>
-                          {for $i=0 to $count_max}
-                            <tr>
-                              <td class="align-middle">{$recent.body.name}</td>
-                              <td class="align-middle">{$recent.body.category}</td>
-                              <td class="align-middle">{$recent.body.date}</td>
-                              <td class="align-middle">{$recent.body.date_return}</td>
-                            </tr>
-                          {/for}
+                          {* {$wylistowanie} *}
                         </tbody>
                       </table>
                     </div>

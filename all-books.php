@@ -1,28 +1,60 @@
 <?php
+$title = "Wszystkie książki";
 
-require "autoload.php";
+include "autoload.php";
+include "head.php";
 
-$smarty->assign('title', 'Wszystkie książki');
+$allbooks = mysqli_query($conn, "SELECT * FROM books");
+$row = $allbooks->fetch_assoc();
+?>
 
-$result = mysqli_query($conn, "SELECT * FROM books");
-$num_rows = mysqli_num_rows($result);
-$smarty->assign('count_max', $num_rows);
+<!-- All books in library -->
+<div class="container-fluid d-flex flex-column m-auto h-100 pr-0">
+    <div class="row w-100 h-100">
+        <div class="col-md-9 pl-5 pr-5 pt-3 pb-3 h-100 overflow-auto">
+          <header>
+            <h1 class="h1"><?=$title?></h1>
+            <span class="d-block mb-4 text-secondary">Krzysztof Król</span>
+          </header>
 
-$book_title="";
-$smarty->assign('recent', array(
-  'head' => array(
-    'header' => 'Wszystkie książki',
-    'name' => 'Tytuł',
-    'category' => 'Kategoria',
-    'date' => 'Data wypożyczenia',
-    'date_return' => 'Data oddania'
-  ),
-  'body' => array(
-    'name' => 'title',
-    'category' => 'Tech Optimisation',
-    'date' => '0000.00.00',
-    'date_return' => '0000.00.00'
-  )
-));
+          <div class="row">
+            <div class="col-md-12">
+              <main>
+                <div class="card">
+                  <div class="card-body">
+                    <table class="table table-sm table-light table-striped">
+                      <thead>
+                        <tr>
+                          <th scope="col">Nazwa</th>
+                          <th scope="col">Wypożyczył</th>
+                          <th scope="col">Wypożyczenie</th>
+                          <th scope="col">Do oddania</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php
+                        while ($row = $allbooks->fetch_assoc()) {
+                          echo '<tr>';
+                            echo '<td class="align-middle d-none">'.$row['id'].'</td>';
+                            echo '<td class="align-middle">'.$row['title'].'</td>';
+                            echo '<td class="align-middle">'.$row['holding'].'</td>';
+                            echo '<td class="align-middle">'.$row['borrowed'].'</td>';
+                            echo '<td class="align-middle">'.$row['regived'].'</td>';
+                          echo '</tr>';
+                        }
+                        ?>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </main>
+            </div> <!-- /col -->
+          </div> <!-- /row -->
+        </div> <!-- /col -->
 
-$smarty->display('all-books.tpl');
+        <?php include "nav.php"; ?>
+
+    </div> <!--/row-->
+</div> <!-- /container -->
+
+<?php include "footer.php" ?>
