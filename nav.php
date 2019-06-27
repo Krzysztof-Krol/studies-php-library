@@ -2,7 +2,7 @@
 require "autoload.php";
 ?>
 
-<div class="col-md-3 p-5 pb-0 border-delicate h-100 bg-white position-relative overflow-auto">
+<div class="my-navigation col-md-3 p-5 pb-0 border-delicate h-100 bg-white position-fixed overflow-auto">
   <aside class="">
     <nav>
       <!-- Navigation for all users -->
@@ -10,7 +10,8 @@ require "autoload.php";
       <ul class="nav flex-column mt-3">
         <li class="nav-item"><a href="/" class="nav-link">Strona główna</a></li>
         <li class="nav-item"><a href="/all-books.php" class="nav-link">Wszystkie książki</a></li>
-        <li class="nav-item"><a href="" class="nav-link">Nowa książka</a></li>
+        <span class="h4 mt-3">Panel Administratora</span>
+        <li class="nav-item"><a href="/manage-books.php" class="nav-link">Zarządzaj książkami</a></li>
     </nav>
   </aside>
   <div class="position-absolute footer pl-3 pr-3">
